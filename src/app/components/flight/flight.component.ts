@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FlightBookService } from 'src/app/services/flight-book.service';
 import { Flight } from '../flight';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-flight',
@@ -38,8 +39,25 @@ export class FlightComponent implements OnInit {
     this.flight = this.flightService.getFlight();
   }
 
-  onSubmit(f: Flight) {
-    this.flightService.addFlight(f);
-    this.flightForm.reset();
+  onSubmit(f: Flight): void {
+    Swal.fire({
+      title: 'Are you sure to confirm your flight',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('Confirmed', 'Your flight is successfully', 'success')
+          .then(() => {
+            this.flightService.addFlight(f);
+          })
+          .then(() => {
+            this.flightForm.reset();
+          });
+      }
+    });
   }
 }
