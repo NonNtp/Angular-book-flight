@@ -8,10 +8,10 @@ export class mockFlightData {
       to: 'Ukraine',
       type: 'One way',
       adults: 1,
-      departure: new Date('2022-03-10'),
+      departure: new Date('2565-03-10'),
       children: 2,
       infants: 3,
-      arrival: new Date('2022-03-15'),
+      arrival: new Date('2565-03-15'),
     },
   ];
 }

@@ -38,12 +38,13 @@
             [matDatepicker]="departurePicker"
             formControlName="departure"
             [min]="minDate"
+            [disabled]="flightForm.value.departure"
           />
           <mat-datepicker-toggle
             matSuffix
             [for]="departurePicker"
           ></mat-datepicker-toggle>
-          <mat-datepicker #departurePicker></mat-datepicker>
+          <mat-datepicker #departurePicker disabled="false"></mat-datepicker>
         </mat-form-field>
       </div>
       <div>
@@ -55,12 +56,13 @@
             [matDatepicker]="arrivalPicker"
             formControlName="arrival"
             [min]="flightForm.value.departure"
+            [disabled]="flightForm.value.arrival"
           />
           <mat-datepicker-toggle
             matSuffix
             [for]="arrivalPicker"
           ></mat-datepicker-toggle>
-          <mat-datepicker #arrivalPicker></mat-datepicker>
+          <mat-datepicker #arrivalPicker disabled="false"></mat-datepicker>
         </mat-form-field>
       </div>
     </div>
@@ -90,6 +92,7 @@
         class="form-control"
         formControlName="adults"
         placeholder="Enter a number"
+        min="0"
       />
       <label>Children</label>
       <input
@@ -97,6 +100,7 @@
         class="form-control"
         formControlName="children"
         placeholder="Enter a number"
+        min="0"
       />
       <label>Infants</label>
       <input
@@ -104,6 +108,7 @@
         class="form-control"
         formControlName="infants"
         placeholder="Enter a number"
+        min="0"
       />
     </div>
     <button

@@ -40,6 +40,18 @@ export class FlightComponent implements OnInit {
   }
 
   onSubmit(f: Flight): void {
+    const departureYear = f.departure.getFullYear() + 543;
+    const departureMonth = f.departure.getMonth();
+    const departureDay = f.departure.getDate();
+    const arrivalYear = f.arrival.getFullYear() + 543;
+    const arrivalMonth = f.arrival.getMonth();
+    const arrivalDay = f.arrival.getDate();
+    f.departure = new Date(
+      departureMonth + 1 + '/' + departureDay + '/' + departureYear
+    );
+    f.arrival = new Date(
+      arrivalMonth + 1 + '/' + arrivalDay + '/' + arrivalYear
+    );
     Swal.fire({
       title: 'Are you sure to confirm your flight',
       text: "You won't be able to revert this!",
