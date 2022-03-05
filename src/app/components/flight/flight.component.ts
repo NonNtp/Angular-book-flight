@@ -10,30 +10,30 @@ import Swal from 'sweetalert2';
   styleUrls: ['./flight.component.css'],
 })
 export class FlightComponent implements OnInit {
-  flight!: Flight[];
-  flightForm!: FormGroup;
-  minDate!: Date;
+  flight: Flight[] = [];
+  flightForm: FormGroup;
+  minDate: Date;
 
   constructor(
     private fb: FormBuilder,
     private flightService: FlightBookService
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.flightForm = this.fb.group({
       fullName: ['', Validators.required],
       from: ['', Validators.required],
       to: ['', Validators.required],
       type: ['', Validators.required],
-      adults: ['', [Validators.required]],
+      adults: ['', [Validators.required, Validators.pattern('^[0-9]{0,1}')]],
       departure: ['', Validators.required],
-      children: ['', [Validators.required]],
-      infants: ['', [Validators.required]],
+      children: ['', [Validators.required, Validators.pattern('^[0-9]{0,1}')]],
+      infants: ['', [Validators.required, Validators.pattern('^[0-9]{0,1}')]],
       arrival: ['', Validators.required],
     });
     this.minDate = new Date();
     this.getFlight();
   }
+
+  ngOnInit(): void {}
 
   getFlight() {
     this.flight = this.flightService.getFlight();
