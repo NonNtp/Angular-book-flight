@@ -108,7 +108,15 @@
         </mat-form-field>
       </div>
     </div>
-    <label>Trip Type </label>
+    <label
+      >Trip Type
+      <span
+        style="color: red"
+        *ngIf="flightForm.get('type')?.errors?.['required']"
+      >
+        *</span
+      >
+    </label>
     <div class="form-check">
       <input
         class="form-check-input"
@@ -128,7 +136,15 @@
       <label class="form-check-label">Return</label>
     </div>
     <div class="form-group mt-3">
-      <label>Adults</label>
+      <label
+        >Adults
+        <span
+          style="color: red"
+          *ngIf="flightForm.get('adults')?.errors?.['required']"
+        >
+          *</span
+        ></label
+      >
       <input
         type="number"
         class="form-control"
@@ -136,7 +152,15 @@
         placeholder="0-9"
         min="0"
       />
-      <label>Children</label>
+      <label
+        >Children
+        <span
+          style="color: red"
+          *ngIf="flightForm.get('children')?.errors?.['required']"
+        >
+          *</span
+        ></label
+      >
       <input
         type="number"
         class="form-control"
@@ -144,7 +168,15 @@
         placeholder="0-9"
         min="0"
       />
-      <label>Infants</label>
+      <label
+        >Infants
+        <span
+          style="color: red"
+          *ngIf="flightForm.get('infants')?.errors?.['required']"
+        >
+          *</span
+        ></label
+      >
       <input
         type="number"
         class="form-control"
